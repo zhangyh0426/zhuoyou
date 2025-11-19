@@ -1,0 +1,70 @@
+<!--pages/activity/activity.wxml-->
+<view class="container">
+  <view class="page-header">
+    <text class="page-title">创建狼人杀活动</text>
+  </view>
+
+  <view class="card form-card">
+    <view class="form-group">
+      <text class="form-label">活动标题 *</text>
+      <input 
+        class="form-input" 
+        placeholder="请输入活动标题，如：周末狼人杀之夜"
+        bindinput="onTitleInput"
+        value="{{activity.title}}"
+      />
+    </view>
+
+    <view class="form-row">
+      <view class="form-group half">
+        <text class="form-label">日期 *</text>
+        <picker mode="date" value="{{activity.date}}" start="{{minDate}}" bindchange="onDateChange">
+          <view class="picker">
+            <text class="picker-text">{{activity.date || '请选择日期'}}</text>
+            <text class="arrow">▼</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-group half">
+        <text class="form-label">时间 *</text>
+        <picker mode="time" value="{{activity.time}}" bindchange="onTimeChange">
+          <view class="picker">
+            <text class="picker-text">{{activity.time || '请选择时间'}}</text>
+            <text class="arrow">▼</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">最大人数 *</text>
+      <input 
+        class="form-input" 
+        type="number" 
+        placeholder="请输入最大参与人数（4-20人）"
+        bindinput="onMaxPlayersInput"
+        value="{{activity.maxPlayers}}"
+      />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">活动描述</text>
+      <textarea 
+        class="form-textarea" 
+        placeholder="请输入活动详细描述（可选）"
+        bindinput="onDescriptionInput"
+        value="{{activity.description}}"
+        maxlength="200"
+      />
+    </view>
+
+    <view class="form-info">
+      <text class="info-text">创建后您将自动成为活动组织者</text>
+    </view>
+
+    <view class="form-actions">
+      <button class="submit-button" bindtap="createActivity">创建活动</button>
+    </view>
+  </view>
+</view>

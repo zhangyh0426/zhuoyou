@@ -1,0 +1,22 @@
+{
+  "name": "storeManager",
+  "version": "1.0.0",
+  "description": "店铺管理云函数",
+  "main": "index.js",
+  "dependencies": {
+    "mysql2": "^3.6.0",
+    "wx-server-sdk": "~3.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "cloudfunction": {
+    "name": "storeManager",
+    "timeout": 10,
+    "runtime": "Nodejs12",
+    "memory": "256MB",
+    "envVariables": {
+      "NODE_ENV": "production"
+    }
+  }
+}

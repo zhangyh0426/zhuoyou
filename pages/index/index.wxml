@@ -1,0 +1,203 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 顶部状态栏 - 微信风格 -->
+  <view class="status-bar">
+    <view class="status-left">
+      <text class="status-time">{{currentTime}}</text>
+    </view>
+    <view class="status-right">
+      <text class="status-text">狼人杀桌游店</text>
+    </view>
+  </view>
+
+  <!-- 顶部导航栏 - 微信风格 -->
+  <view class="nav-header">
+    <view class="nav-content">
+      <text class="nav-title">桌游店</text>
+      <view class="nav-actions">
+        <view class="nav-action" bindtap="goToSearch">
+          <text class="nav-icon">🔍</text>
+        </view>
+        <view class="nav-action" bindtap="goToMore">
+          <text class="nav-icon">⋯</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 主要内容区域 - 宽松布局 -->
+  <scroll-view class="main-content" scroll-y="true">
+    <!-- 欢迎卡片 - 微信风格 -->
+    <view class="welcome-card">
+      <view class="welcome-header">
+        <view class="welcome-avatar">
+          <text class="avatar-text">🎲</text>
+        </view>
+        <view class="welcome-info">
+          <text class="welcome-greeting">{{greeting}}</text>
+          <text class="welcome-subtitle">{{isLoggedIn ? '欢迎回来，' + userInfo.name : '登录解锁更多功能'}}</text>
+        </view>
+      </view>
+      <view class="welcome-stats">
+        <view class="stat-item">
+          <text class="stat-number">{{todayActivities.length}}</text>
+          <text class="stat-label">今日活动</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-number">{{recommendedActivities.length}}</text>
+          <text class="stat-label">推荐活动</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-number">{{storeStatus.isOpen ? '营业' : '休息'}}</text>
+          <text class="stat-label">店铺状态</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 店铺状态卡片 - 微信风格 -->
+    <view class="store-card" bindtap="goToStoreStatus">
+      <view class="store-header">
+        <view class="store-icon">
+          <text class="icon">{{storeStatus.isOpen ? '🏪' : '🌙'}}</text>
+        </view>
+        <view class="store-info">
+          <text class="store-title">店铺状态</text>
+          <text class="store-status">{{storeStatus.isOpen ? '正在营业' : '已打烊'}}</text>
+        </view>
+        <view class="store-indicator">
+          <view class="status-dot {{storeStatus.isOpen ? 'active' : 'inactive'}}"></view>
+          <text class="store-time">{{storeStatus.openTime || '今日休息'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 快捷操作区域 - 宽松布局 -->
+    <view class="quick-actions">
+      <view class="action-section">
+        <text class="section-title">快捷操作</text>
+        <view class="action-grid">
+          <view class="action-item primary" bindtap="goToCreateActivity">
+            <view class="action-icon">
+              <text class="icon">➕</text>
+            </view>
+            <text class="action-text">创建活动</text>
+            <text class="action-desc">发起新的桌游活动</text>
+          </view>
+          <view class="action-item secondary" bindtap="goToMemberCard">
+            <view class="action-icon">
+              <text class="icon">👤</text>
+            </view>
+            <text class="action-text">用户中心</text>
+            <text class="action-desc">查看用户信息</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 管理员工具 - 微信风格 -->
+    <view class="admin-section" wx:if="{{isAdmin}}">
+      <view class="section-header">
+        <text class="section-title">管理工具</text>
+        <text class="section-more">全部工具</text>
+      </view>
+      <view class="admin-grid">
+        <view class="admin-item" bindtap="goToStoreStatusManagement">
+          <view class="admin-icon store">
+            <text class="icon">🏪</text>
+          </view>
+          <text class="admin-text">店铺管理</text>
+        </view>
+        <view class="admin-item" bindtap="goToMemberManagement">
+          <view class="admin-icon member">
+            <text class="icon">👥</text>
+          </view>
+          <text class="admin-text">用户管理</text>
+        </view>
+        <view class="admin-item" bindtap="goToFinancialReport">
+          <view class="admin-icon finance">
+            <text class="icon">📊</text>
+          </view>
+          <text class="admin-text">财务报告</text>
+        </view>
+        <view class="admin-item" bindtap="goToSystemSettings">
+          <view class="admin-icon settings">
+            <text class="icon">⚙️</text>
+          </view>
+          <text class="admin-text">系统设置</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 活动列表 - 微信风格 -->
+    <view class="activities-section" wx:if="{{todayActivities.length > 0 || recommendedActivities.length > 0}}">
+      <view class="section-header">
+        <text class="section-title">活动推荐</text>
+        <text class="section-more" bindtap="goToActivityList">查看全部</text>
+      </view>
+      
+      <view class="activity-list">
+        <!-- 今日活动 -->
+        <view class="activity-item today" wx:for="{{todayActivities}}" wx:key="id" bindtap="goToActivityDetail" data-id="{{item.id}}">
+          <view class="activity-avatar">
+            <text class="avatar-icon">🎯</text>
+          </view>
+          <view class="activity-content">
+            <view class="activity-title-row">
+              <text class="activity-tag today">今日</text>
+              <text class="activity-title">{{item.title}}</text>
+            </view>
+            <view class="activity-info">
+              <text class="activity-time">⏰ {{item.time}}</text>
+              <text class="activity-players">👥 {{item.currentPlayers}}/{{item.maxPlayers}}人</text>
+            </view>
+            <view class="activity-progress">
+              <view class="progress-bar">
+                <view class="progress-fill" style="width: {{(item.currentPlayers / item.maxPlayers) * 100}}%"></view>
+              </view>
+              <text class="progress-text">{{Math.round((item.currentPlayers / item.maxPlayers) * 100)}}%</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 推荐活动 -->
+        <view class="activity-item recommend" wx:for="{{recommendedActivities}}" wx:key="id" bindtap="goToActivityDetail" data-id="{{item.id}}">
+          <view class="activity-avatar">
+            <text class="avatar-icon">⭐</text>
+          </view>
+          <view class="activity-content">
+            <view class="activity-title-row">
+              <text class="activity-tag recommend">推荐</text>
+              <text class="activity-title">{{item.title}}</text>
+            </view>
+            <view class="activity-info">
+              <text class="activity-date">📅 {{item.date}}</text>
+              <text class="activity-time">⏰ {{item.time}}</text>
+            </view>
+            <view class="activity-footer">
+              <text class="activity-players">👥 {{item.currentPlayers}}/{{item.maxPlayers}}人</text>
+              <view class="join-btn">加入</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 - 微信风格 -->
+    <view class="empty-section" wx:if="{{todayActivities.length === 0 && recommendedActivities.length === 0}}">
+      <view class="empty-card">
+        <view class="empty-icon">🎲</view>
+        <text class="empty-title">暂无活动</text>
+        <text class="empty-desc">成为第一个发起活动的人吧！</text>
+        <view class="empty-action" bindtap="goToCreateActivity">
+          <text class="action-text">创建活动</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部间距 -->
+    <view class="bottom-spacing"></view>
+  </scroll-view>
+
+  <!-- 底部标签栏占位 -->
+  <view class="tab-bar-placeholder"></view>
+</view>

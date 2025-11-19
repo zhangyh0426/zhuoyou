@@ -1,0 +1,738 @@
+/* pages/index/index.wxss */
+@import "../../common/styles/theme.wxss";
+
+/* 微信风格基础样式 */
+page {
+  background-color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+
+/* 基础容器 - 微信风格 */
+.container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120rpx;
+}
+
+/* 顶部状态栏 - 微信风格 */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 30rpx;
+  background-color: #ededed;
+  font-size: 24rpx;
+  color: #888;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.status-left {
+  flex: 1;
+}
+
+.status-right {
+  flex: 1;
+  text-align: right;
+}
+
+.status-time {
+  font-weight: 500;
+}
+
+.status-text {
+  font-size: 22rpx;
+}
+
+/* 顶部导航栏 - 微信风格 */
+.nav-header {
+  background-color: #ededed;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #000;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 30rpx;
+}
+
+.nav-action {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.nav-action:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.nav-icon {
+  font-size: 32rpx;
+  color: #666;
+}
+
+/* 主要内容区域 - 宽松布局 */
+.main-content {
+  height: calc(100vh - 200rpx);
+  background-color: #f5f5f5;
+}
+
+/* 欢迎卡片 - 微信风格 */
+.welcome-card {
+  background: white;
+  margin: 20rpx 30rpx;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+}
+
+.welcome-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.welcome-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #07c160 0%, #00d4aa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.3);
+}
+
+.avatar-text {
+  font-size: 48rpx;
+  color: white;
+}
+
+.welcome-info {
+  flex: 1;
+}
+
+.welcome-greeting {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 8rpx;
+}
+
+.welcome-subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #888;
+}
+
+.welcome-stats {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #07c160;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  display: block;
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 店铺状态卡片 - 微信风格 */
+.store-card {
+  background: white;
+  margin: 20rpx 30rpx;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+.store-card:active {
+  transform: scale(0.98);
+}
+
+.store-header {
+  display: flex;
+  align-items: center;
+}
+
+.store-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30rpx;
+}
+
+.store-info {
+  flex: 1;
+}
+
+.store-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 8rpx;
+}
+
+.store-status {
+  display: block;
+  font-size: 28rpx;
+  color: #888;
+}
+
+.store-indicator {
+  text-align: right;
+}
+
+.status-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin-bottom: 8rpx;
+  margin-left: auto;
+}
+
+.status-dot.active {
+  background: #07c160;
+  box-shadow: 0 0 0 4rpx rgba(7, 193, 96, 0.2);
+  animation: pulse 2s infinite;
+}
+
+.status-dot.inactive {
+  background: #fa5151;
+}
+
+.store-time {
+  display: block;
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 快捷操作区域 - 宽松布局 */
+.quick-actions {
+  margin: 40rpx 30rpx;
+}
+
+.action-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+}
+
+.action-section .section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.action-item {
+  background: white;
+  border-radius: 12rpx;
+  padding: 40rpx 20rpx;
+  text-align: center;
+  transition: all 0.2s ease;
+  border: 1rpx solid #f0f0f0;
+}
+
+.action-item:active {
+  transform: scale(0.98);
+  background-color: #f8f8f8;
+}
+
+.action-item.primary {
+  background: linear-gradient(135deg, #07c160 0%, #00d4aa 100%);
+  color: white;
+  border: none;
+}
+
+.action-item.secondary {
+  background: linear-gradient(135deg, #576b95 0%, #7b8fc7 100%);
+  color: white;
+  border: none;
+}
+
+.action-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0 auto 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-text {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.action-desc {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+/* 管理员工具 - 微信风格 */
+.admin-section {
+  margin: 40rpx 30rpx;
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #000;
+}
+
+.section-more {
+  font-size: 28rpx;
+  color: #576b95;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+}
+
+.admin-item {
+  text-align: center;
+  padding: 20rpx 10rpx;
+  border-radius: 12rpx;
+  transition: all 0.2s ease;
+}
+
+.admin-item:active {
+  background-color: #f8f8f8;
+}
+
+.admin-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16rpx;
+}
+
+.admin-icon.store {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+}
+
+.admin-icon.member {
+  background: linear-gradient(135deg, #576b95 0%, #7b8fc7 100%);
+}
+
+.admin-icon.finance {
+  background: linear-gradient(135deg, #07c160 0%, #00d4aa 100%);
+}
+
+.admin-icon.settings {
+  background: linear-gradient(135deg, #fa5151 0%, #ff7675 100%);
+}
+
+.admin-icon .icon {
+  font-size: 40rpx;
+  color: white;
+}
+
+.admin-text {
+  display: block;
+  font-size: 24rpx;
+  color: #333;
+}
+
+/* 活动展示区 */
+.activities-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding: 0 var(--spacing-xs);
+}
+
+.section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.section-count {
+  font-size: var(--font-size-sm);
+  color: #7f8c8d;
+  background: #f8f9fa;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 12rpx;
+}
+
+/* 活动网格 */
+.activities-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+/* 活动卡片 */
+.activity-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: var(--spacing-lg);
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+  border: 1rpx solid #f0f0f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-card:active {
+  transform: translateY(-2rpx);
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.activity-card.today {
+  border-left: 4rpx solid #3498db;
+}
+
+.activity-card.recommend {
+  border-left: 4rpx solid #e74c3c;
+}
+
+.activity-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.activity-type {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 1rpx;
+}
+
+.activity-card.today .activity-type {
+  background: #e3f2fd;
+  color: #2196f3;
+}
+
+.activity-card.recommend .activity-type {
+  background: #ffebee;
+  color: #f44336;
+}
+
+.activity-title {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.4;
+}
+
+.activity-body {
+  margin-bottom: var(--spacing-md);
+}
+
+.activity-time, .activity-date, .activity-players {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: #7f8c8d;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.5;
+}
+
+.activity-players {
+  color: #ff6b35;
+  font-weight: 600;
+}
+
+/* 活动进度条 */
+.activity-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8rpx;
+  background: #ecf0f1;
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b35 0%, #ff8c42 100%);
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: var(--font-size-xs);
+  color: #7f8c8d;
+  font-weight: 600;
+  min-width: 40rpx;
+}
+
+/* 推荐活动底部 */
+.activity-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.join-btn {
+  background: #27ae60;
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 12rpx;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.join-btn:active {
+  background: #219a52;
+  transform: scale(0.95);
+}
+
+/* 空状态 */
+.empty-state {
+  background: white;
+  border-radius: 20rpx;
+  padding: var(--spacing-xxl);
+  text-align: center;
+  margin: var(--spacing-xl) 0;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+  border: 1rpx solid #f0f0f0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.6;
+}
+
+.empty-title {
+  display: block;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-desc {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: #7f8c8d;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+}
+
+.create-btn {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  color: white;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: 16rpx;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.create-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 15rpx rgba(255, 107, 53, 0.4);
+}
+
+/* 管理员工具栏 */
+.admin-toolbar {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  border-radius: 20rpx;
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-toolbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.toolbar-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.toolbar-title {
+  display: block;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  letter-spacing: 1rpx;
+}
+
+.toolbar-subtitle {
+  display: block;
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.toolbar-actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.admin-action-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16rpx;
+  padding: var(--spacing-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10rpx);
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-action-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.admin-action-btn.store {
+  border-left: 4rpx solid #3498db;
+}
+
+.admin-action-btn.member {
+  border-left: 4rpx solid #9b59b6;
+}
+
+.admin-action-btn.finance {
+  border-left: 4rpx solid #f39c12;
+}
+
+.admin-action-btn.settings {
+  border-left: 4rpx solid #e74c3c;
+}
+
+.action-icon {
+  font-size: 32rpx;
+  margin-bottom: var(--spacing-xs);
+  display: block;
+}
+
+.action-text {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* 响应式设计 */
+@media (max-width: 350px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+  
+  .brand-name {
+    font-size: 40rpx;
+  }
+  
+  .function-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar-actions {
+    grid-template-columns: 1fr;
+  }
+}

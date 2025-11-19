@@ -1,0 +1,529 @@
+/* pages/store-status/store-status.wxss */
+@import "../../common/styles/theme.wxss";
+
+/* 微信风格基础样式 */
+page {
+  background-color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+
+/* 基础容器 - 微信风格 */
+.container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 顶部状态栏 - 微信风格 */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 30rpx;
+  background-color: #ededed;
+  font-size: 24rpx;
+  color: #888;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.status-left {
+  flex: 1;
+}
+
+.status-right {
+  flex: 1;
+  text-align: right;
+}
+
+.status-time {
+  font-weight: 500;
+}
+
+.status-text {
+  font-size: 22rpx;
+}
+
+/* 顶部导航栏 - 微信风格 */
+.nav-header {
+  background-color: #ededed;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-title-section {
+  flex: 1;
+}
+
+.nav-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #000;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 30rpx;
+}
+
+.nav-action {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.nav-action:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.nav-icon {
+  font-size: 32rpx;
+  color: #666;
+}
+
+/* 主要内容区域 - 宽松布局 */
+.main-content {
+  height: calc(100vh - 200rpx);
+  background-color: #f5f5f5;
+}
+
+/* 欢迎卡片 - 微信风格 */
+.welcome-card {
+  background: white;
+  margin: 20rpx 30rpx;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+}
+
+.welcome-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.welcome-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #07c160 0%, #00d4aa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.3);
+}
+
+.avatar-text {
+  font-size: 48rpx;
+  color: white;
+}
+
+.welcome-info {
+  flex: 1;
+}
+
+.welcome-greeting {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 8rpx;
+}
+
+.welcome-subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #888;
+}
+
+.welcome-stats {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #07c160;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  display: block;
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 店铺状态卡片 - 微信风格 */
+.store-card {
+  background: white;
+  margin: 20rpx 30rpx;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+.store-card:active {
+  transform: scale(0.98);
+}
+
+.store-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.store-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30rpx;
+}
+
+.store-icon-text {
+  font-size: 40rpx;
+  color: white;
+}
+
+.store-info {
+  flex: 1;
+}
+
+.store-name {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 8rpx;
+}
+
+.store-status {
+  display: block;
+  font-size: 26rpx;
+  color: #888;
+}
+
+.store-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.status-dot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  margin-left: 20rpx;
+}
+
+.dot-open {
+  background-color: #07c160;
+  box-shadow: 0 0 16rpx rgba(7, 193, 96, 0.4);
+}
+
+.dot-closed {
+  background-color: #fa5151;
+  box-shadow: 0 0 16rpx rgba(250, 81, 81, 0.4);
+}
+
+.store-details {
+  padding: 20rpx 0;
+  border-top: 1rpx solid #f0f0f0;
+  border-bottom: 1rpx solid #f0f0f0;
+  margin: 20rpx 0;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-size: 28rpx;
+  color: #888;
+  margin-right: 20rpx;
+  min-width: 140rpx;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  color: #000;
+  font-weight: 500;
+}
+
+.store-update {
+  text-align: center;
+}
+
+.update-time {
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 快捷操作区域 - 微信风格 */
+.quick-actions {
+  margin: 20rpx 30rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 20rpx;
+  padding-left: 10rpx;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.action-item {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx 20rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+.action-item:active {
+  transform: scale(0.95);
+  box-shadow: 0 1rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.action-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16rpx;
+}
+
+.action-icon.close-icon {
+  background: linear-gradient(135deg, #fa5151 0%, #f74c4c 100%);
+}
+
+.action-icon.open-icon {
+  background: linear-gradient(135deg, #07c160 0%, #00d4aa 100%);
+}
+
+.icon-text {
+  font-size: 40rpx;
+  color: white;
+}
+
+.action-text {
+  display: block;
+  font-size: 24rpx;
+  color: #000;
+  font-weight: 500;
+}
+
+/* 非管理员提示 */
+.non-admin-tip {
+  margin: 20rpx 30rpx;
+}
+
+.tip-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+}
+
+.tip-icon {
+  display: block;
+  font-size: 60rpx;
+  margin-bottom: 20rpx;
+}
+
+.tip-text {
+  display: block;
+  font-size: 28rpx;
+  color: #888;
+}
+
+/* 操作说明 */
+.instruction-section {
+  margin: 20rpx 30rpx 40rpx;
+}
+
+.instruction-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+}
+
+.instruction-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.instruction-item:last-child {
+  margin-bottom: 0;
+}
+
+.instruction-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+  width: 40rpx;
+  text-align: center;
+}
+
+.instruction-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+@keyframes closeAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 30rpx rgba(255, 118, 117, 0.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.open-animation {
+  animation: openAnimation 0.6s ease-out;
+}
+
+.close-animation {
+  animation: closeAnimation 0.6s ease-out;
+}
+
+.status-details {
+  margin-bottom: var(--spacing-lg);
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1rpx solid var(--light-gray);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-size: var(--font-size-md);
+  color: var(--gray);
+}
+
+.detail-value {
+  font-size: var(--font-size-md);
+  color: var(--black);
+  font-weight: bold;
+}
+
+.admin-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.action-button {
+  flex: 1;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.action-button.secondary {
+  background-color: var(--light-gray);
+  color: var(--primary-color);
+  border: 2rpx solid var(--primary-color);
+}
+
+.user-info {
+  padding: var(--spacing-md);
+  background-color: var(--warning-bg);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.info-text {
+  font-size: var(--font-size-sm);
+  color: var(--warning-color);
+  text-align: center;
+}
+
+.status-info {
+  background-color: var(--white);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.info-icon {
+  font-size: var(--font-size-lg);
+  margin-right: var(--spacing-sm);
+}
+
+.info-text {
+  font-size: var(--font-size-sm);
+  color: var(--gray);
+  line-height: 1.5;
+}

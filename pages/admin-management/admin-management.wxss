@@ -1,0 +1,716 @@
+/* pages/admin-management/admin-management.wxss */
+
+/* 全局容器优化 */
+.container {
+  padding: 40rpx;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 添加装饰性背景元素 */
+.container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 页面头部样式升级 */
+.container {
+  padding: 40rpx 30rpx;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* 页面头部 */
+.header {
+  text-align: center;
+  margin-bottom: 60rpx;
+  padding: 60rpx 40rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 24rpx;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12rpx 40rpx rgba(102, 126, 234, 0.3);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: 52rpx;
+  font-weight: 700;
+  margin-bottom: 16rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 30rpx;
+  opacity: 0.9;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* 区块样式优化 */
+.admin-section,
+.form-section,
+.security-section,
+.info-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20rpx);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 50rpx;
+  box-shadow: 
+    0 8rpx 32rpx rgba(0, 0, 0, 0.08),
+    0 0 0 1rpx rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.admin-section:hover,
+.form-section:hover,
+.security-section:hover,
+.info-section:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 
+    0 12rpx 48rpx rgba(0, 0, 0, 0.12),
+    0 0 0 1rpx rgba(255, 255, 255, 0.4);
+}
+
+/* 标题区域优化 */
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx solid #f8f9fa;
+}
+
+.title-text {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.admin-count {
+  font-size: 28rpx;
+  color: #667eea;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  padding: 12rpx 24rpx;
+  border-radius: 24rpx;
+  font-weight: 600;
+  border: 1rpx solid rgba(102, 126, 234, 0.2);
+}
+
+/* 管理员列表优化 */
+.admin-list {
+  max-height: 700rpx;
+  overflow-y: auto;
+  padding: 8rpx;
+}
+
+.admin-list::-webkit-scrollbar {
+  width: 8rpx;
+}
+
+.admin-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4rpx;
+}
+
+.admin-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4rpx;
+}
+
+.admin-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.admin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+  border-radius: 20rpx;
+  border-left: 6rpx solid #e0e0e0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.admin-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.admin-item:hover {
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+  transform: translateY(-4rpx) translateX(4rpx);
+  box-shadow: 0 12rpx 32rpx rgba(102, 126, 234, 0.15);
+  border-left-color: #667eea;
+}
+
+.admin-item:hover::before {
+  opacity: 1;
+}
+
+.admin-item.super-admin {
+  border-left-color: #ff6b6b;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+}
+
+.admin-item.super-admin:hover {
+  background: linear-gradient(135deg, #ffe8e8 0%, #f8f9ff 100%);
+  border-left-color: #ff4757;
+  box-shadow: 0 12rpx 32rpx rgba(255, 107, 107, 0.15);
+}
+
+/* 管理员信息区域优化 */
+.admin-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.admin-name {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 4rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.admin-name::after {
+  content: '';
+  width: 8rpx;
+  height: 8rpx;
+  background: #667eea;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.admin-phone {
+  font-size: 30rpx;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.admin-role {
+  font-size: 26rpx;
+  color: #6c757d;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+  display: inline-block;
+  font-weight: 600;
+  border: 1rpx solid rgba(108, 117, 125, 0.1);
+  width: fit-content;
+}
+
+.admin-item.super-admin .admin-role {
+  background: linear-gradient(135deg, #ffe0e0 0%, #ffcccc 100%);
+  color: #e74c3c;
+  border-color: rgba(231, 76, 60, 0.2);
+}
+
+/* 操作按钮优化 */
+.admin-actions {
+  display: flex;
+  gap: 20rpx;
+  align-items: center;
+}
+
+.edit-btn,
+.delete-btn {
+  font-size: 28rpx;
+  padding: 14rpx 28rpx;
+  border-radius: 12rpx;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.3);
+}
+
+.edit-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.edit-btn:hover::before {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.edit-btn:hover {
+  background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  transform: translateY(-2rpx);
+  box-shadow: 0 6rpx 20rpx rgba(76, 175, 80, 0.4);
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ff4757 0%, #cc3747 100%);
+  color: white;
+  box-shadow: 0 4rpx 12rpx rgba(255, 71, 87, 0.3);
+}
+
+.delete-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.delete-btn:hover::before {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(135deg, #cc3747 0%, #b02e3b 100%);
+  transform: translateY(-2rpx);
+  box-shadow: 0 6rpx 20rpx rgba(255, 71, 87, 0.4);
+}
+
+.edit-btn:hover {
+  background: linear-gradient(135deg, #007aff 0%, #0056d2 100%);
+  color: white;
+}
+
+.edit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.edit-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 122, 255, 0.4);
+}
+
+.edit-btn:hover::before {
+  left: 100%;
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ff4757 0%, #cc3747 100%);
+  color: white;
+}
+
+.delete-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.delete-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(255, 71, 87, 0.4);
+}
+
+.delete-btn:hover::before {
+  left: 100%;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3rpx);
+  box-shadow: 0 12rpx 32rpx rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+.cancel-btn {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #6c757d;
+  border: 2rpx solid #dee2e6;
+  box-shadow: 0 4rpx 12rpx rgba(108, 117, 125, 0.1);
+}
+
+.cancel-btn:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 20rpx rgba(108, 117, 125, 0.15);
+}
+
+/* 安全操作区 */
+.security-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #ff6b35 0%, #ff8c42 100%);
+  border-radius: 24rpx 24rpx 0 0;
+}
+
+.security-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20rpx;
+  margin-top: 16rpx;
+}
+
+.export-btn,
+.import-btn,
+.backup-btn {
+  height: 84rpx;
+  font-size: 30rpx;
+  border-radius: 16rpx;
+  border: none;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.export-btn {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+}
+
+.export-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.export-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 10rpx 30rpx rgba(76, 175, 80, 0.4);
+}
+
+.export-btn:hover::before {
+  left: 100%;
+}
+
+.import-btn {
+  background: linear-gradient(135deg, #FF9800 0%, #e68900 100%);
+  color: white;
+}
+
+.import-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.import-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 10rpx 30rpx rgba(255, 152, 0, 0.4);
+}
+
+.import-btn:hover::before {
+  left: 100%;
+}
+
+.backup-btn {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  color: white;
+}
+
+.backup-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.backup-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 10rpx 30rpx rgba(33, 150, 243, 0.4);
+}
+
+.backup-btn:hover::before {
+  left: 100%;
+}
+/* 使用说明优化 */
+.info-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 24rpx 24rpx 0 0;
+}
+
+.info-content {
+  padding: 8rpx 0;
+}
+
+.info-item {
+  font-size: 28rpx;
+  color: #5a6c7d;
+  line-height: 1.7;
+  margin-bottom: 20rpx;
+  padding: 20rpx 24rpx;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 16rpx;
+  border-left: 4rpx solid #667eea;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.info-item::before {
+  content: '💡';
+  position: absolute;
+  left: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24rpx;
+}
+
+.info-item {
+  padding-left: 60rpx;
+}
+
+.info-item:hover {
+  background: linear-gradient(135deg, #f0f3ff 0%, #f8f9fa 100%);
+  transform: translateX(4rpx);
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.1);
+}
+
+.info-item:first-child::before {
+  content: '👤';
+}
+
+.info-item:nth-child(2)::before {
+  content: '🔐';
+}
+
+.info-item:nth-child(3)::before {
+  content: '💾';
+}
+
+.info-item:last-child::before {
+  content: '🔄';
+}
+
+/* 滚动条样式已移动到列表项上方 */
+
+/* 响应式设计 */
+@media screen and (max-width: 750rpx) {
+  .container {
+    padding: 30rpx 20rpx;
+  }
+  
+  .header {
+    padding: 40rpx 30rpx;
+    margin-bottom: 40rpx;
+  }
+  
+  .title {
+    font-size: 44rpx;
+  }
+  
+  .subtitle {
+    font-size: 26rpx;
+  }
+  
+  .admin-section,
+  .form-section,
+  .security-section,
+  .info-section {
+    padding: 36rpx;
+    margin-bottom: 36rpx;
+  }
+  
+  .section-title {
+    margin-bottom: 32rpx;
+  }
+  
+  .title-text {
+    font-size: 34rpx;
+  }
+  
+  .admin-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24rpx;
+    padding: 28rpx;
+  }
+  
+  .admin-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 20rpx;
+  }
+  
+  .submit-btn,
+  .cancel-btn {
+    height: 84rpx;
+    font-size: 30rpx;
+    border-radius: 30rpx;
+    font-size: 30rpx;
+  }
+  
+  .security-actions {
+    gap: 18rpx;
+  }
+  
+  .export-btn,
+  .import-btn,
+  .backup-btn {
+    height: 80rpx;
+    font-size: 28rpx;
+  }
+}
+
+@media screen and (max-width: 450rpx) {
+  .container {
+    padding: 20rpx 16rpx;
+  }
+  
+  .header {
+    padding: 32rpx 24rpx;
+    margin-bottom: 32rpx;
+  }
+  
+  .admin-section,
+  .form-section,
+  .security-section,
+  .info-section {
+    padding: 28rpx;
+    margin-bottom: 28rpx;
+  }
+  
+  .admin-item {
+    padding: 24rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .info-item {
+    padding: 16rpx 20rpx 16rpx 56rpx;
+    margin-bottom: 16rpx;
+    font-size: 26rpx;
+  }
+}
+
+/* 大屏幕优化 */
+@media screen and (min-width: 1200rpx) {
+  .container {
+    max-width: 1200rpx;
+    margin: 0 auto;
+    padding: 50rpx;
+  }
+  
+  .admin-section,
+  .form-section,
+  .security-section,
+  .info-section {
+    padding: 50rpx;
+    margin-bottom: 60rpx;
+  }
+  
+  .admin-list {
+    max-height: 800rpx;
+  }
+  
+  .admin-item {
+    padding: 40rpx;
+    margin-bottom: 30rpx;
+  }
+  
+  .security-actions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

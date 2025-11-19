@@ -1,0 +1,89 @@
+<!--pages/admin-management/admin-management.wxml-->
+<view class="container">
+  <!-- 页面头部 -->
+  <view class="header">
+    <view class="title">管理员管理</view>
+    <view class="subtitle">动态管理管理员账号和权限</view>
+  </view>
+
+  <!-- 管理员列表 -->
+  <view class="admin-section">
+    <view class="section-title">
+      <text class="title-text">当前管理员</text>
+      <text class="admin-count">{{adminList.length}} 位</text>
+    </view>
+    
+    <view class="admin-list">
+      <view class="admin-item {{item.role === 'super' ? 'super-admin' : ''}}" 
+            wx:for="{{adminList}}" wx:key="phone">
+        <view class="admin-info">
+          <view class="admin-name">{{item.name}}</view>
+          <view class="admin-phone">{{item.phone}}</view>
+          <view class="admin-role">{{item.role === 'super' ? '超级管理员' : '普通管理员'}}</view>
+        </view>
+        <view class="admin-actions">
+          <button class="edit-btn" bindtap="editAdmin" data-index="{{index}}">编辑</button>
+          <button class="delete-btn" bindtap="deleteAdmin" data-index="{{index}}" wx:if="{{currentAdmin.role === 'super'}}">删除</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加/编辑管理员表单 -->
+  <view class="form-section">
+    <view class="section-title">
+      <text class="title-text">{{editingIndex >= 0 ? '编辑管理员' : '添加新管理员'}}</text>
+    </view>
+    
+    <form bindsubmit="submitForm">
+      <view class="form-group">
+        <label class="form-label">姓名</label>
+        <input class="form-input" name="name" value="{{formData.name}}" placeholder="请输入管理员姓名" />
+      </view>
+      
+      <view class="form-group">
+        <label class="form-label">手机号</label>
+        <input class="form-input" name="phone" value="{{formData.phone}}" type="number" placeholder="请输入手机号" />
+      </view>
+      
+      <view class="form-group">
+        <label class="form-label">角色权限</label>
+        <picker class="form-picker" name="role" range="{{roleOptions}}" range-key="label" value="{{roleIndex}}" bindchange="onRoleChange">
+          <view class="picker-display">
+            {{roleOptions[roleIndex].label}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-actions">
+        <button class="submit-btn" formType="submit">{{editingIndex >= 0 ? '更新' : '添加'}}管理员</button>
+        <button class="cancel-btn" type="default" bindtap="resetForm" wx:if="{{editingIndex >= 0}}">取消</button>
+      </view>
+    </form>
+  </view>
+
+  <!-- 安全操作区 -->
+  <view class="security-section" wx:if="{{currentAdmin.role === 'super'}}">
+    <view class="section-title">
+      <text class="title-text">安全操作</text>
+    </view>
+    <view class="security-actions">
+      <button class="export-btn" bindtap="exportAdminData">导出管理员数据</button>
+      <button class="import-btn" bindtap="importAdminData">导入管理员数据</button>
+      <button class="backup-btn" bindtap="backupAllData">备份所有数据</button>
+    </view>
+  </view>
+
+  <!-- 操作说明 -->
+  <view class="info-section">
+    <view class="section-title">
+      <text class="title-text">使用说明</text>
+    </view>
+    <view class="info-content">
+      <view class="info-item">• 普通管理员：可管理用户、查看统计</view>
+      <view class="info-item">• 超级管理员：拥有所有权限，可管理其他管理员</view>
+      <view class="info-item">• 管理员操作会自动记录在本地存储中</view>
+      <view class="info-item">• 建议定期备份管理员数据</view>
+    </view>
+  </view>
+</view>

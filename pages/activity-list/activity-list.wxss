@@ -1,0 +1,441 @@
+/* pages/activity-list/activity-list.wxss */
+/* 微信风格基础样式 */
+page {
+  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+/* 主容器 - 微信风格 */
+.container {
+  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 顶部状态栏 - 微信风格 */
+.status-bar {
+  height: 40rpx;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.status-time {
+  font-size: 24rpx;
+  color: #fff;
+  font-weight: 500;
+}
+
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.status-text {
+  font-size: 24rpx;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* 导航栏 - 微信风格 */
+.nav-header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 30rpx;
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #fff;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 25rpx;
+}
+
+.nav-action {
+  width: 50rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nav-action:active {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0.95);
+}
+
+.nav-icon {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+/* 标签页 - 毛玻璃导航 */
+.tab-bar {
+  display: flex;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1rpx solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-neutral);
+  opacity: var(--opacity-light);
+  z-index: -1;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: var(--spacing-md) 0;
+  border-radius: var(--border-radius-lg);
+  position: relative;
+  z-index: 1;
+  transition: all var(--animation-normal) ease;
+}
+
+.tab-item.active {
+  background: var(--primary-gradient);
+  box-shadow: var(--shadow-colored);
+}
+
+.tab-text {
+  font-size: var(--font-size-md);
+  color: var(--white);
+  font-weight: 600;
+  text-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.3);
+}
+
+/* 活动列表 - 现代化卡片设计 */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  position: relative;
+  z-index: 1;
+}
+
+/* 活动卡片 - 增强立体感交互 */
+.activity-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1rpx solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--glass-shadow);
+  transition: all var(--animation-normal) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: var(--primary-gradient);
+  opacity: var(--opacity-medium);
+}
+
+.activity-card:active {
+  transform: translateY(-4rpx) scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+/* 卡片头部 - 现代化布局 */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  position: relative;
+}
+
+.activity-title {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--darker-gray);
+  flex: 1;
+  margin-right: var(--spacing-sm);
+  text-shadow: 0 1rpx 3rpx rgba(255, 255, 255, 0.8);
+}
+
+/* 状态徽章 - 增强视觉效果 */
+.status-badge {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-full);
+  color: var(--white);
+  font-weight: bold;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1rpx;
+}
+
+.status-badge.available {
+  background: linear-gradient(135deg, var(--success-color), var(--success-light));
+  box-shadow: 0 4rpx 12rpx rgba(0, 184, 148, 0.3);
+}
+
+.status-badge.full {
+  background: linear-gradient(135deg, var(--error-color), #fd79a8);
+  box-shadow: 0 4rpx 12rpx rgba(232, 67, 147, 0.3);
+}
+
+.status-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 3s infinite;
+}
+
+/* 卡片主体 - 信息展示优化 */
+.card-body {
+  margin-bottom: var(--spacing-md);
+  position: relative;
+}
+
+.activity-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  background: var(--bg-accent);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--animation-fast) ease;
+}
+
+.info-item:active {
+  background: var(--primary-gradient-soft);
+  transform: scale(0.98);
+}
+
+.info-icon {
+  font-size: var(--font-size-lg);
+  margin-right: var(--spacing-sm);
+  width: 40rpx;
+  text-align: center;
+}
+
+.info-text {
+  font-size: var(--font-size-base);
+  color: var(--medium-gray);
+  font-weight: 500;
+  text-shadow: 0 1rpx 2rpx rgba(255, 255, 255, 0.6);
+}
+
+/* 进度条 - 现代化设计 */
+.progress-bar {
+  width: 100%;
+  height: 16rpx;
+  background: var(--light-gray);
+  border-radius: var(--border-radius-full);
+  margin-top: var(--spacing-sm);
+  overflow: hidden;
+  box-shadow: inset 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: var(--border-radius-full);
+  transition: width var(--animation-slow) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: progress-shine 2s infinite;
+}
+
+@keyframes progress-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 卡片底部 - 操作区域 */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.organizer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: var(--bg-accent);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+}
+
+.organizer-label {
+  font-size: var(--font-size-sm);
+  color: var(--medium-gray);
+  opacity: var(--opacity-light);
+}
+
+.organizer-name {
+  font-size: var(--font-size-base);
+  color: var(--darker-gray);
+  font-weight: bold;
+  text-shadow: 0 1rpx 2rpx rgba(255, 255, 255, 0.6);
+}
+
+/* 操作按钮 - 现代化设计 */
+.card-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.action-button {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  border: none;
+  color: var(--white);
+  font-weight: bold;
+  transition: all var(--animation-normal) ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.action-button:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-md);
+}
+
+.join-btn {
+  background: var(--primary-gradient);
+  box-shadow: var(--shadow-colored);
+}
+
+.detail-btn {
+  background: var(--info-color);
+  box-shadow: 0 4rpx 12rpx rgba(116, 185, 255, 0.3);
+}
+
+.action-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--animation-slow) ease;
+}
+
+.action-button:active::before {
+  left: 100%;
+}
+
+/* 无活动状态 - 现代化空状态设计 */
+.no-activities {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1rpx solid var(--glass-border);
+  border-radius: var(--border-radius-xl);
+  text-align: center;
+  padding: var(--spacing-xxl) var(--spacing-lg);
+  margin: var(--spacing-xxl) auto;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  max-width: 600rpx;
+}
+
+.no-activities::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-neutral);
+  opacity: var(--opacity-light);
+  z-index: -1;
+}
+
+.no-activity-icon {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: var(--spacing-lg);
+  filter: drop-shadow(0 8rpx 16rpx rgba(0, 0, 0, 0.1));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10rpx); }
+}
+
+.no-activity-text {
+  display: block;
+  font-size: var(--font-size-xl);
+  color: var(--darker-gray);
+  margin-bottom: var(--spacing-sm);
+  font-weight: bold;
+  text-shadow: 0 1rpx 3rpx rgba(255, 255, 255, 0.8);
+}
+
+.no-activity-subtext {
+  font-size: var(--font-size-md);
+  color: var(--medium-gray);
+  opacity: var(--opacity-medium);
+  font-weight: 500;
+}

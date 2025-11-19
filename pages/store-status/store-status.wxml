@@ -1,0 +1,138 @@
+<!--pages/store-status/store-status.wxml-->
+<view class="container">
+  <!-- 顶部状态栏 - 微信风格 -->
+  <view class="status-bar">
+    <view class="status-left">
+      <text class="status-time">{{currentTime}}</text>
+    </view>
+    <view class="status-right">
+      <text class="status-text">店铺管理</text>
+    </view>
+  </view>
+
+  <!-- 顶部导航栏 - 微信风格 -->
+  <view class="nav-header">
+    <view class="nav-content">
+      <view class="nav-title-section">
+        <text class="nav-title">店铺状态</text>
+      </view>
+      <view class="nav-actions">
+        <view class="nav-action" bindtap="goToIndex">
+          <text class="nav-icon">🏠</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <scroll-view class="main-content" scroll-y>
+    <!-- 欢迎卡片 - 仿照主页风格 -->
+    <view class="welcome-card">
+      <view class="welcome-header">
+        <view class="welcome-avatar">
+          <text class="avatar-text">🏪</text>
+        </view>
+        <view class="welcome-info">
+          <text class="welcome-greeting">店铺管理中心</text>
+          <text class="welcome-subtitle">{{userRole || '普通用户'}}</text>
+        </view>
+      </view>
+      
+      <view class="welcome-stats">
+        <view class="stat-item">
+          <text class="stat-number">{{storeStatus.isOpen ? '营业' : '休息'}}</text>
+          <text class="stat-label">当前状态</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-number">{{storeStatus.lastUpdate ? '已更新' : '未更新'}}</text>
+          <text class="stat-label">状态记录</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-number">{{isAdmin ? '管理' : '查看'}}</text>
+          <text class="stat-label">操作权限</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 店铺状态卡片 - 微信风格 -->
+    <view class="store-card">
+      <view class="store-header">
+        <view class="store-icon">
+          <text class="store-icon-text">{{storeStatus.isOpen ? '☀️' : '🌙'}}</text>
+        </view>
+        <view class="store-info">
+          <text class="store-name">{{storeStatus.isOpen ? '营业中' : '已打烊'}}</text>
+          <text class="store-status">{{storeStatus.isOpen ? '欢迎光临' : '暂时休息'}}</text>
+        </view>
+        <view class="store-indicator">
+          <view class="status-dot {{storeStatus.isOpen ? 'dot-open' : 'dot-closed'}}"></view>
+        </view>
+      </view>
+      
+      <view class="store-details" wx:if="{{storeStatus.openTime && storeStatus.closeTime}}">
+        <view class="detail-item">
+          <text class="detail-label">营业时间：</text>
+          <text class="detail-value">{{storeStatus.openTime}} - {{storeStatus.closeTime}}</text>
+        </view>
+      </view>
+      
+      <view class="store-update">
+        <text class="update-time">最后更新：{{storeStatus.lastUpdate || '暂无记录'}}</text>
+      </view>
+    </view>
+
+    <!-- 快捷操作区域 - 仿照主页风格 -->
+    <view class="quick-actions" wx:if="{{isAdmin}}">
+      <text class="section-title">快捷操作</text>
+      <view class="action-grid">
+        <view class="action-item" bindtap="toggleStoreStatus">
+          <view class="action-icon {{storeStatus.isOpen ? 'close-icon' : 'open-icon'}}">
+            <text class="icon-text">{{storeStatus.isOpen ? '🌙' : '☀️'}}</text>
+          </view>
+          <text class="action-text">{{storeStatus.isOpen ? '一键打烊' : '一键开业'}}</text>
+        </view>
+        
+        <view class="action-item" bindtap="setBusinessHours">
+          <view class="action-icon">
+            <text class="icon-text">⏰</text>
+          </view>
+          <text class="action-text">营业时间</text>
+        </view>
+        
+        <view class="action-item" bindtap="viewStoreHistory">
+          <view class="action-icon">
+            <text class="icon-text">📊</text>
+          </view>
+          <text class="action-text">营业记录</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 非管理员提示 -->
+    <view class="non-admin-tip" wx:else>
+      <view class="tip-card">
+        <text class="tip-icon">🔒</text>
+        <text class="tip-text">您当前为普通用户，仅可查看店铺状态</text>
+      </view>
+    </view>
+
+    <!-- 操作说明 -->
+    <view class="instruction-section">
+      <text class="section-title">操作说明</text>
+      <view class="instruction-card">
+        <view class="instruction-item">
+          <text class="instruction-icon">💡</text>
+          <text class="instruction-text">管理员可一键切换店铺营业状态</text>
+        </view>
+        <view class="instruction-item">
+          <text class="instruction-icon">⏰</text>
+          <text class="instruction-text">建议设置合理的营业时间</text>
+        </view>
+        <view class="instruction-item">
+          <text class="instruction-icon">📱</text>
+          <text class="instruction-text">状态变更会实时同步到所有用户</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

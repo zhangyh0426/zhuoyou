@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WXML 帮助工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .wxml-example {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+        .syntax-highlight {
+            color: #0066cc;
+        }
+        .attribute {
+            color: #cc6600;
+        }
+        .value {
+            color: #009933;
+        }
+        .comment {
+            color: #999999;
+            font-style: italic;
+        }
+        h2 {
+            color: #ff6b35;
+            border-bottom: 2px solid #ff6b35;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>微信小程序 WXML 开发参考</h1>
+    
+    <h2>1. 基础标签使用</h2>
+    <div class="wxml-example">
+<span class="comment"><!-- 文本显示 --></span>
+<span class="syntax-highlight"><text></span>普通文本<span class="syntax-highlight"></text></span>
+<span class="syntax-highlight"><text></span>{{message}}<span class="syntax-highlight"></text></span>
+
+<span class="comment"><!-- 条件渲染 --></span>
+<span class="syntax-highlight"><view></span>
+  <span class="syntax-highlight"><text></span>{{isLoggedIn ? '欢迎回来' : '请登录'}}<span class="syntax-highlight"></text></span>
+<span class="syntax-highlight"></view></span>
+
+<span class="comment"><!-- 列表渲染 --></span>
+<span class="syntax-highlight"><view></span>
+  <span class="syntax-highlight"><block></span>
+    <span class="syntax-highlight"><text></span>{{item.name}} - {{item.age}}<span class="syntax-highlight"></text></span>
+  <span class="syntax-highlight"></block></span>
+<span class="syntax-highlight"></view></span>
+    </div>
+
+    <h2>2. 事件绑定</h2>
+    <div class="wxml-example">
+<span class="comment"><!-- 点击事件 --></span>
+<span class="syntax-highlight"><button</span> <span class="attribute">bindtap</span>=<span class="value">"handleClick"</span><span class="syntax-highlight">></span>点击我<span class="syntax-highlight"></button></span>
+
+<span class="comment"><!-- 表单输入事件 --></span>
+<span class="syntax-highlight"><input</span> <span class="attribute">placeholder</span>=<span class="value">"请输入"</span> <span class="attribute">bindinput</span>=<span class="value">"handleInput"</span> <span class="attribute">value</span>=<span class="value">"{{inputValue}}"</span><span class="syntax-highlight">></span>
+
+<span class="comment"><!-- 表单提交 --></span>
+<span class="syntax-highlight"><form</span> <span class="attribute">bindsubmit</span>=<span class="value">"handleSubmit"</span><span class="syntax-highlight">></span>
+  <span class="syntax-highlight"><button</span> <span class="attribute">formType</span>=<span class="value">"submit"</span><span class="syntax-highlight">></span>提交<span class="syntax-highlight"></button></span>
+<span class="syntax-highlight"></form></span>
+    </div>
+
+    <h2>3. 样式绑定</h2>
+    <div class="wxml-example">
+<span class="comment"><!-- 内联样式 --></span>
+<span class="syntax-highlight"><view</span> <span class="attribute">style</span>=<span class="value">"color: {{isActive ? '#ff6b35' : '#999'}}; font-size: 16px;"</span><span class="syntax-highlight">></span>样式测试<span class="syntax-highlight"></view></span>
+
+<span class="comment"><!-- 条件类名 --></span>
+<span class="syntax-highlight"><view</span> <span class="attribute">class</span>=<span class="value">"{{isVip ? 'vip-class' : 'normal-class'}}"</span><span class="syntax-highlight">></span>会员内容<span class="syntax-highlight"></view></span>
+    </div>
+
+    <h2>4. 跳转链接</h2>
+    <div class="wxml-example">
+<span class="comment"><!-- 页面跳转 --></span>
+<span class="syntax-highlight"><navigator</span> <span class="attribute">url</span>=<span class="value">"/pages/member/member"</span> <span class="attribute">open-type</span>=<span class="value">"navigate"</span><span class="syntax-highlight">></span>跳转到会员页<span class="syntax-highlight"></navigator></span>
+
+<span class="comment"><!-- tabBar跳转 --></span>
+<span class="syntax-highlight"><navigator</span> <span class="attribute">url</span>=<span class="value">"/pages/index/index"</span> <span class="attribute">open-type</span>=<span class="value">"switchTab"</span><span class="syntax-highlight">></span>返回首页<span class="syntax-highlight"></navigator></span>
+    </div>
+
+    <h2>5. 条件渲染指令</h2>
+    <div class="wxml-example">
+<span class="comment"><!-- wx:if --></span>
+<span class="syntax-highlight"><view</span> <span class="attribute">wx:if</span>=<span class="value">"{{userType === 'admin'}}"</span><span class="syntax-highlight">></span>管理员内容<span class="syntax-highlight"></view></span>
+
+<span class="comment"><!-- wx:elif --></span>
+<span class="syntax-highlight"><view</span> <span class="attribute">wx:elif</span>=<span class="value">"{{userType === 'vip'}}"</span><span class="syntax-highlight">></span>VIP内容<span class="syntax-highlight"></view></span>
+
+<span class="comment"><!-- wx:else --></span>
+<span class="syntax-highlight"><view</span> <span class="attribute">wx:else</span><span class="syntax-highlight">></span>普通用户内容<span class="syntax-highlight"></view></span>
+
+<span class="comment"><!-- hidden --></span>
+<span class="syntax-highlight"><view</span> <span class="attribute">hidden</span>=<span class="value">"{{!isVisible}}"</span><span class="syntax-highlight">></span>隐藏内容<span class="syntax-highlight"></view></span>
+    </div>
+
+    <h2>6. 循环渲染</h2>
+    <div class="wxml-example">
+<span class="comment"><!-- 基础循环 --></span>
+<span class="syntax-highlight"><block</span> <span class="attribute">wx:for</span>=<span class="value">"{{activities}}"</span> <span class="attribute">wx:key</span>=<span class="value">"index"</span><span class="syntax-highlight">></span>
+  <span class="syntax-highlight"><view></span>{{index + 1}}. {{item.title}}<span class="syntax-highlight"></view></span>
+<span class="syntax-highlight"></block></span>
+
+<span class="comment"><!-- 指定索引和当前项变量名 --></span>
+<span class="syntax-highlight"><block</span> <span class="attribute">wx:for</span>=<span class="value">"{{members}}"</span> <span class="attribute">wx:for-index</span>=<span class="value">"idx"</span> <span class="attribute">wx:for-item</span>=<span class="value">"member"</span> <span class="attribute">wx:key</span>=<span class="value">"id"</span><span class="syntax-highlight">></span>
+  <span class="syntax-highlight"><view></span>{{idx}}. {{member.name}} ({{member.phone}})<span class="syntax-highlight"></view></span>
+<span class="syntax-highlight"></block></span>
+    </div>
+
+    <h2>7. 模板使用</h2>
+    <div class="wxml-example">
+<span class="comment"><!-- 定义模板 --></span>
+<span class="syntax-highlight"><template</span> <span class="attribute">name</span>=<span class="value">"activityItem"</span><span class="syntax-highlight">></span>
+  <span class="syntax-highlight"><view</span> <span class="attribute">class</span>=<span class="value">"activity-item"</span><span class="syntax-highlight">></span>
+    <span class="syntax-highlight"><text></span>{{item.title}}<span class="syntax-highlight"></text></span>
+    <span class="syntax-highlight"><text></span>{{item.time}}<span class="syntax-highlight"></text></span>
+  <span class="syntax-highlight"></view></span>
+<span class="syntax-highlight"></template></span>
+
+<span class="comment"><!-- 使用模板 --></span>
+<span class="syntax-highlight"><template</span> <span class="attribute">is</span>=<span class="value">"activityItem"</span> <span class="attribute">data</span>=<span class="value">"{{item: currentActivity}}"</span><span class="syntax-highlight">></span><span class="syntax-highlight"></template></span>
+    </div>
+
+    <h2>8. 引用其他文件</h2>
+    <div class="wxml-example">
+<span class="comment"><!-- 引用WXML文件 --></span>
+<span class="syntax-highlight"><import</span> <span class="attribute">src</span>=<span class="value">"../components/header.wxml"</span> <span class="attribute">wx:if</span>=<span class="value">"{{showHeader}}"</span><span class="syntax-highlight">></span><span class="syntax-highlight"></import></span>
+
+<span class="comment"><!-- 引用模板 --></span>
+<span class="syntax-highlight"><include</span> <span class="attribute">src</span>=<span class="value">"../templates/footer.wxml"</span><span class="syntax-highlight">></span><span class="syntax-highlight"></include></span>
+    </div>
+</body>
+</html>

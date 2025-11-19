@@ -1,0 +1,108 @@
+<!--pages/member/member.wxml-->
+<view class="container">
+  <!-- 导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-left">
+      <text class="nav-title">用户中心</text>
+    </view>
+    <view class="nav-right">
+      <text class="nav-icon" bindtap="goToSearch">🔍</text>
+      <text class="nav-icon" bindtap="goToMore">+</text>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <scroll-view scroll-y class="content">
+    <!-- 未登录状态 -->
+    <view class="not-logged-in" wx:if="{{!isLoggedIn}}">
+      <view class="welcome-card">
+        <view class="welcome-icon">👋</view>
+        <text class="greeting">{{greeting}}</text>
+        <text class="welcome-subtitle">欢迎来到狼人杀桌游店</text>
+        <text class="welcome-desc">登录后享受专属用户服务</text>
+        <button class="login-button" bindtap="goToLogin">
+          <text class="login-text">立即登录</text>
+        </button>
+      </view>
+    </view>
+
+    <!-- 已登录状态 -->
+    <view class="member-info" wx:else>
+      <!-- 用户信息卡片 -->
+      <view class="profile-section">
+        <view class="profile-card">
+          <view class="profile-left">
+            <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill" />
+            <view class="user-badge" wx:if="{{userInfo.phone === '13800000000' || userInfo.phone === '13900000000'}}">
+              <text class="badge-text">👑 管理员</text>
+            </view>
+          </view>
+          <view class="user-details">
+            <text class="user-name">{{userInfo.name}}</text>
+            <text class="user-phone">{{userInfo.phone}}</text>
+
+          </view>
+          <view class="logout-btn" bindtap="logout">
+            <text class="logout-icon">🚪</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 余额卡片 -->
+      <view class="balance-section">
+        <view class="balance-card">
+          <view class="balance-header">
+            <text class="balance-title">账户余额</text>
+            <text class="balance-desc">可用于活动消费</text>
+          </view>
+          <view class="balance-amount">
+            <text class="balance-currency">¥</text>
+            <text class="balance-number">{{balance.toFixed(2)}}</text>
+          </view>
+          <!-- 只保留余额显示，移除充值功能 -->
+        </view>
+      </view>
+
+      <!-- 交易记录 -->
+      <view class="history-section">
+        <view class="section-header">
+          <text class="section-title">交易记录</text>
+          <text class="section-count">共{{transactionHistory.length}}笔</text>
+        </view>
+        
+        <view class="transaction-list">
+          <view 
+            class="transaction-item" 
+            wx:for="{{transactionHistory}}" 
+            wx:key="id"
+            bindtap="viewTransactionDetail"
+            data-transaction="{{item}}"
+          >
+            <view class="transaction-icon">
+              <text class="icon-{{item.type === '消费' ? 'expense' : 'income'}}">{{item.type === '消费' ? '💸' : '💰'}}</text>
+            </view>
+            <view class="transaction-main">
+              <text class="transaction-type">{{item.type}}</text>
+              <text class="transaction-date">{{item.date}}</text>
+            </view>
+            <view class="transaction-amount">
+              <text class="amount-{{item.type === '消费' ? 'expense' : 'income'}}">
+                {{item.type === '消费' ? '-' : '+'}}¥{{item.amount.toFixed(2)}}
+              </text>
+              <text class="transaction-balance">余额 ¥{{item.balance.toFixed(2)}}</text>
+            </view>
+          </view>
+          
+          <view class="no-transactions" wx:if="{{transactionHistory.length === 0}}">
+            <view class="empty-icon">📋</view>
+            <text class="no-transactions-text">暂无交易记录</text>
+            <text class="no-transactions-desc">开始您的第一次消费吧！</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 底部空白区域 -->
+      <view class="bottom-space"></view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,58 @@
+<!--pages/cloud-test/cloud-test.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">云数据库测试</text>
+    <text class="subtitle">环境ID: cloud1-2gq89p31220bb320</text>
+  </view>
+
+  <view class="status-card">
+    <view class="status-item">
+      <text class="label">连接状态:</text>
+      <text class="value {{connectionStatus === '连接正常' ? 'success' : 'error'}}">{{connectionStatus}}</text>
+    </view>
+    <button class="test-btn" bindtap="testConnection" disabled="{{loading}}">
+      {{loading ? '测试中...' : '测试连接'}}
+    </button>
+  </view>
+
+  <view class="test-section">
+    <view class="section-header">
+      <text class="section-title">功能测试</text>
+      <button class="run-all-btn" bindtap="runAllTests" disabled="{{loading}}">
+        运行所有测试
+      </button>
+    </view>
+
+    <view class="test-buttons">
+      <button class="test-btn secondary" bindtap="testUserOperations" disabled="{{loading}}">
+        测试用户操作
+      </button>
+      <button class="test-btn secondary" bindtap="testMemberCardOperations" disabled="{{loading}}">
+        测试会员卡操作
+      </button>
+      <button class="test-btn secondary" bindtap="testTransactionOperations" disabled="{{loading}}">
+        测试交易记录
+      </button>
+      <button class="test-btn secondary" bindtap="testActivityOperations" disabled="{{loading}}">
+        测试活动操作
+      </button>
+    </view>
+  </view>
+
+  <view class="results-section">
+    <view class="section-header">
+      <text class="section-title">测试结果</text>
+      <button class="clear-btn" bindtap="clearResults">清空</button>
+    </view>
+
+    <scroll-view class="results-scroll" scroll-y="true">
+      <view wx:for="{{testResults}}" wx:key="time" class="result-item {{item.type}}">
+        <text class="result-time">{{item.time}}</text>
+        <text class="result-message">{{item.message}}</text>
+      </view>
+      <view wx:if="{{testResults.length === 0}}" class="empty-results">
+        <text>暂无测试结果，点击上方按钮开始测试</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,643 @@
+/* pages/member/member.wxss */
+@import "../../common/styles/theme.wxss";
+
+/* 微信风格基础样式 */
+page {
+  background: #f5f5f5;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+
+/* 全局容器 */
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+/* 导航栏 */
+.nav-bar {
+  background: linear-gradient(135deg, #07c160 0%, #06a050 100%);
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx;
+  color: white;
+  box-shadow: 0 4rpx 8rpx rgba(0,0,0,0.1);
+  margin-top: 40rpx;
+}
+
+.nav-left {
+  flex: 1;
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.nav-right {
+  display: flex;
+  gap: 24rpx;
+}
+
+.nav-icon {
+  font-size: 32rpx;
+  color: #666;
+  padding: 8rpx;
+}
+
+/* 内容区域 */
+.content {
+  flex: 1;
+  padding: 20rpx;
+  padding-bottom: 100rpx;
+}
+
+/* 未登录状态样式 */
+.not-logged-in {
+  margin-top: 40rpx;
+}
+
+.welcome-card {
+  background: white;
+  border-radius: 32rpx;
+  padding: 60rpx 40rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.08);
+  border: 1rpx solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #07c160, #4cd964);
+}
+
+.welcome-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+  display: block;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+.greeting {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.welcome-subtitle {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.welcome-desc {
+  display: block;
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 40rpx;
+  line-height: 1.6;
+}
+
+.login-button {
+  background: linear-gradient(135deg, #07c160 0%, #4cd964 100%);
+  border-radius: 50rpx;
+  color: white;
+  border: none;
+  padding: 24rpx 48rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  box-shadow: 0 8rpx 32rpx rgba(7, 193, 96, 0.3);
+  transition: all 0.3s ease;
+  width: 80%;
+}
+
+.login-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 16rpx rgba(7, 193, 96, 0.4);
+}
+
+/* 未登录状态样式 */
+.not-logged-in {
+  margin-top: var(--spacing-xxl);
+}
+
+.welcome-card {
+  background: white;
+  border-radius: 24rpx;
+  padding: var(--spacing-xxl);
+  text-align: center;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.08);
+  border: 1rpx solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.welcome-icon {
+  font-size: 80rpx;
+  margin-bottom: var(--spacing-lg);
+  display: block;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+.welcome-title {
+  display: block;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: var(--spacing-xs);
+}
+
+.welcome-subtitle {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-sm);
+}
+
+.welcome-desc {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: #7f8c8d;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+}
+
+.login-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50rpx;
+  color: white;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  box-shadow: 0 4rpx 20rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  width: 80%;
+}
+
+.login-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 10rpx rgba(102, 126, 234, 0.4);
+}
+
+.login-icon {
+  font-size: var(--font-size-lg);
+}
+
+/* 已登录状态样式 */
+.member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+/* 用户信息卡片 */
+.profile-section {
+  margin-top: 20rpx;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 32rpx;
+  padding: 32rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.08);
+  border: 1rpx solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #07c160, #4cd964);
+}
+
+.profile-left {
+  position: relative;
+  margin-right: 24rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid #f0f0f0;
+  background-color: var(--light-gray);
+}
+
+.user-badge {
+  position: absolute;
+  bottom: -8rpx;
+  right: -8rpx;
+  background: linear-gradient(135deg, #ffd700, #ffed4a);
+  border-radius: 16rpx;
+  padding: 4rpx 12rpx;
+  border: 2rpx solid white;
+}
+
+.badge-text {
+  font-size: 20rpx;
+  font-weight: 600;
+  color: #8b4513;
+}
+
+.user-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.user-phone {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.user-level {
+  display: inline-block;
+  background: rgba(7, 193, 96, 0.1);
+  border-radius: 16rpx;
+  padding: 4rpx 16rpx;
+}
+
+.level-text {
+  font-size: 24rpx;
+  color: #07c160;
+  font-weight: 500;
+}
+
+.logout-btn {
+  padding: 16rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.logout-icon {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.user-phone {
+  font-size: var(--font-size-md);
+  color: #7f8c8d;
+  margin-bottom: var(--spacing-xs);
+}
+
+.user-level {
+  display: flex;
+  align-items: center;
+}
+
+.level-text {
+  font-size: var(--font-size-sm);
+  color: #ff6b35;
+  font-weight: 600;
+  background: rgba(255, 107, 53, 0.1);
+  padding: 4rpx 8rpx;
+  border-radius: 8rpx;
+}
+
+.logout-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: rgba(231, 76, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:active {
+  background: rgba(231, 76, 60, 0.2);
+  transform: scale(0.95);
+}
+
+.logout-icon {
+  font-size: var(--font-size-lg);
+}
+
+/* 余额卡片 */
+.balance-section {
+  margin: 20rpx 0;
+}
+
+.balance-card {
+  background: white;
+  border-radius: 32rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.08);
+  border: 1rpx solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.balance-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #07c160, #4cd964);
+}
+
+.balance-header {
+  margin-bottom: 32rpx;
+}
+
+.balance-title {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.balance-desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.balance-amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.balance-currency {
+  font-size: 32rpx;
+  color: #07c160;
+  font-weight: 600;
+  margin-right: 8rpx;
+}
+
+.balance-number {
+  font-size: 80rpx;
+  font-weight: 700;
+  color: #07c160;
+}
+
+/* 快速充值区域 */
+.quick-recharge {
+  position: relative;
+  z-index: 1;
+}
+
+.recharge-title {
+  display: block;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.recharge-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.recharge-option {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12rpx;
+  padding: var(--spacing-md);
+  text-align: center;
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.recharge-option:active {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0.95);
+}
+
+.recharge-option .amount {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: white;
+}
+
+.custom-recharge-btn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 12rpx;
+  padding: var(--spacing-md);
+  color: #667eea;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.custom-recharge-btn:active {
+  background: white;
+  transform: scale(0.98);
+}
+
+/* 交易记录 */
+.history-section {
+  margin: 20rpx 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.section-count {
+  font-size: 24rpx;
+  color: #999;
+  background: #f8f9fa;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+}
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.transaction-item {
+  background: white;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.transaction-item:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.transaction-icon {
+  margin-right: 24rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  font-size: 32rpx;
+}
+
+.transaction-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-type {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.transaction-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.transaction-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.amount-income {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #07c160;
+}
+
+.amount-expense {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #f56c6c;
+}
+
+.transaction-balance {
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+/* 空状态 */
+.no-transactions {
+  text-align: center;
+  padding: 80rpx 40rpx;
+  opacity: 0.7;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+  display: block;
+}
+
+.no-transactions-text {
+  display: block;
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 12rpx;
+  font-weight: 500;
+}
+
+.no-transactions-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #ccc;
+}
+
+/* 底部空白区域 */
+.bottom-space {
+  height: 80rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 350px) {
+  .container {
+    padding: var(--spacing-xs);
+  }
+  
+  .recharge-options {
+    grid-template-columns: 1fr;
+  }
+}

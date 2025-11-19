@@ -1,0 +1,32 @@
+{
+  "name": "werewolf-game-miniprogram",
+  "version": "1.0.0",
+  "description": "狼人杀桌游店微信小程序",
+  "main": "app.js",
+  "scripts": {
+    "dev": "echo 'Run in WeChat DevTools'",
+    "build": "echo 'Build for production'",
+    "lint": "eslint \"**/*.js\" --fix",
+    "lint:check": "eslint \"**/*.js\"",
+    "format": "prettier --write \"**/*.{js,css,json,wxml,wxss}\"",
+    "format:check": "prettier --check \"**/*.{js,css,json,wxml,wxss}\"",
+    "quality": "npm run lint:check && npm run format:check",
+    "test": "echo 'No tests specified yet'"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-wxml": "^0.8.0",
+    "prettier": "^3.2.4"
+  },
+  "dependencies": {
+    "mysql2": "^3.15.3"
+  },
+  "keywords": [
+    "miniprogram",
+    "wxml",
+    "wechat",
+    "werewolf-game"
+  ],
+  "author": "simonz",
+  "license": "MIT"
+}

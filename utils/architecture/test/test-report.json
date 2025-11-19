@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-11-19T06:28:20.519Z",
+  "duration": 13,
+  "summary": {
+    "totalSuites": 2,
+    "passedSuites": 0,
+    "failedSuites": 2
+  },
+  "suites": [
+    {
+      "name": "Architecture",
+      "success": false,
+      "testResults": [
+        {
+          "testName": "ArchitectureManager",
+          "success": false,
+          "message": "断言失败: 架构管理器已初始化",
+          "timestamp": "2025-11-19T06:28:20.514Z"
+        }
+      ]
+    },
+    {
+      "name": "Integration",
+      "success": false,
+      "testResults": [
+        {
+          "testName": "ComponentIntegration",
+          "success": false,
+          "message": "Cannot read properties of undefined (reading 'filter')",
+          "timestamp": "2025-11-19T06:28:20.517Z"
+        }
+      ]
+    }
+  ],
+  "environment": {
+    "nodeVersion": "v24.11.0",
+    "platform": "win32",
+    "arch": "x64",
+    "memory": {
+      "rss": 54771712,
+      "heapTotal": 10543104,
+      "heapUsed": 5541264,
+      "external": 1627316,
+      "arrayBuffers": 10515
+    }
+  }
+}

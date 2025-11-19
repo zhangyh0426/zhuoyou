@@ -1,0 +1,50 @@
+<!--pages/login/login.wxml-->
+<view class="login-container">
+  <view class="login-header">
+    <view class="logo-placeholder">
+      <text class="logo-text">🐺</text>
+    </view>
+    <text class="title">欢迎来到狼人杀桌游店</text>
+    <text class="subtitle">{{isNewMember ? '注册成为用户' : '登录您的账户'}}</text>
+  </view>
+
+  <view class="login-form">
+    <view class="input-group">
+      <text class="input-label">手机号</text>
+      <input 
+        class="input-field" 
+        type="number" 
+        placeholder="请输入手机号"
+        maxlength="11"
+        bindinput="onPhoneInput"
+        value="{{phoneNumber}}"
+      />
+    </view>
+
+    <view class="input-group">
+      <text class="input-label">姓名</text>
+      <input 
+        class="input-field" 
+        type="text" 
+        placeholder="请输入您的姓名"
+        bindinput="onNameInput"
+        value="{{memberName}}"
+      />
+    </view>
+
+    <view class="login-button" bindtap="handleLogin">
+      <text class="button-text">{{isNewMember ? '注册用户' : '登录'}}</text>
+    </view>
+
+
+  </view>
+
+  <view class="login-tips">
+    <text class="tips-text">
+      登录即表示您同意我们的
+      <text class="link-text">服务条款</text>
+      和
+      <text class="link-text">隐私政策</text>
+    </text>
+  </view>
+</view>

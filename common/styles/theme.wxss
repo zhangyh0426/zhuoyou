@@ -1,0 +1,93 @@
+/* 全局样式变量 */
+:root {
+  /* 主色调 - 现代化渐变色彩 */
+  --primary-color: #ff6b35;
+  --primary-light: #ff8c42;
+  --primary-dark: #e55a2b;
+  --primary-gradient: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  --primary-gradient-soft: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 140, 66, 0.1) 100%);
+  
+  /* 辅助色彩 */
+  --secondary-color: #6c5ce7;
+  --secondary-light: #a29bfe;
+  --secondary-dark: #5a4fcf;
+  
+  /* 状态颜色 */
+  --success-color: #00b894;
+  --success-light: #55efc4;
+  --warning-color: #fdcb6e;
+  --error-color: #e84393;
+  --info-color: #74b9ff;
+  
+  /* 中性色 - 增强层次 */
+  --white: #ffffff;
+  --lightest-gray: #f8f9fa;
+  --light-gray: #f1f3f4;
+  --gray: #e1e8ed;
+  --medium-gray: #95a5a6;
+  --dark-gray: #34495e;
+  --darker-gray: #2c3e50;
+  --black: #1a1a1a;
+  
+  /* 背景色系 */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-accent: #f1f3f4;
+  --primary-bg: rgba(255, 107, 53, 0.1);
+  
+  /* 渐变背景 */
+  --gradient-warm: linear-gradient(135deg, #ff6b35 0%, #ff8c42 50%, #fd79a8 100%);
+  --gradient-cool: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #6c5ce7 100%);
+  --gradient-neutral: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  
+  /* 毛玻璃效果 */
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8rpx 32rpx rgba(31, 38, 135, 0.37);
+  --glass-blur: blur(20rpx);
+  
+  /* 字体大小 - 优化层次 */
+  --font-size-xs: 20rpx;
+  --font-size-sm: 24rpx;
+  --font-size-base: 26rpx;
+  --font-size-md: 28rpx;
+  --font-size-lg: 32rpx;
+  --font-size-xl: 36rpx;
+  --font-size-xxl: 40rpx;
+  --font-size-xxxl: 48rpx;
+  --font-size-display: 56rpx;
+  
+  /* 间距 - 扩大视觉空间 */
+  --spacing-xs: 10rpx;
+  --spacing-sm: 20rpx;
+  --spacing-md: 30rpx;
+  --spacing-lg: 40rpx;
+  --spacing-xl: 50rpx;
+  --spacing-xxl: 60rpx;
+  
+  /* 圆角 - 增加层次 */
+  --border-radius-xs: 6rpx;
+  --border-radius-sm: 10rpx;
+  --border-radius-md: 16rpx;
+  --border-radius-lg: 24rpx;
+  --border-radius-xl: 32rpx;
+  --border-radius-full: 9999rpx;
+  
+  /* 阴影 - 增强立体感 */
+  --shadow-xs: 0 1rpx 3rpx rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4rpx 12rpx rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 12rpx 40rpx rgba(0, 0, 0, 0.18);
+  --shadow-colored: 0 8rpx 24rpx rgba(255, 107, 53, 0.25);
+  
+  /* 动画时长 */
+  --animation-fast: 0.2s;
+  --animation-normal: 0.3s;
+  --animation-slow: 0.5s;
+  
+  /* 透明度 */
+  --opacity-light: 0.6;
+  --opacity-medium: 0.8;
+  --opacity-heavy: 0.9;
+}

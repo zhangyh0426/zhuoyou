@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户中心 - 狼人杀桌游店</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* 导航栏 */
+        .nav-bar {
+            background: linear-gradient(135deg, #07c160 0%, #06a050 100%);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .nav-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-icon {
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* 主容器 */
+        .container {
+            padding: 20px;
+            min-height: calc(100vh - 110px);
+        }
+
+        /* 用户信息卡片 */
+        .user-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .avatar {
+            width: 120rpx;
+            height: 120rpx;
+            border-radius: 50%;
+            background: #07c160;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40rpx;
+            margin: 0 auto 20rpx;
+        }
+
+        .username {
+            font-size: 36rpx;
+            font-weight: 600;
+            margin-bottom: 12rpx;
+        }
+
+        .phone {
+            font-size: 28rpx;
+            color: #666;
+            margin-bottom: 12rpx;
+        }
+
+        .member-level {
+            font-size: 24rpx;
+            color: #07c160;
+            background: rgba(7, 193, 96, 0.1);
+            padding: 4rpx 16rpx;
+            border-radius: 20rpx;
+            display: inline-block;
+        }
+
+        .logout-btn {
+            margin-top: 32rpx;
+            background: #f8f8f8;
+            color: #666;
+            border: none;
+            padding: 24rpx 48rpx;
+            border-radius: 24rpx;
+            font-size: 28rpx;
+            cursor: pointer;
+        }
+
+        /* 余额卡片 */
+        .balance-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .balance-title {
+            font-size: 32rpx;
+            color: #666;
+            margin-bottom: 20rpx;
+        }
+
+        .balance-amount {
+            font-size: 80rpx;
+            font-weight: 600;
+            color: #07c160;
+            margin-bottom: 12rpx;
+        }
+
+        .balance-desc {
+            font-size: 24rpx;
+            color: #999;
+        }
+
+        /* 交易记录 */
+        .transaction-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 36rpx;
+            font-weight: 600;
+            margin-bottom: 32rpx;
+            color: #333;
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32rpx 0;
+            border-bottom: 1rpx solid #f0f0f0;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-info {
+            flex: 1;
+        }
+
+        .transaction-type {
+            font-size: 32rpx;
+            color: #333;
+            margin-bottom: 8rpx;
+        }
+
+        .transaction-date {
+            font-size: 24rpx;
+            color: #999;
+        }
+
+        .transaction-amount {
+            font-size: 32rpx;
+            font-weight: 600;
+            color: #07c160;
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 80rpx 40rpx;
+            opacity: 0.7;
+        }
+
+        .empty-icon {
+            font-size: 80rpx;
+            margin-bottom: 24rpx;
+        }
+
+        .empty-text {
+            font-size: 32rpx;
+            color: #999;
+            margin-bottom: 12rpx;
+        }
+
+        .empty-desc {
+            font-size: 24rpx;
+            color: #ccc;
+        }
+
+        /* 底部空白 */
+        .bottom-space {
+            height: 80rpx;
+        }
+
+        /* 未登录状态 */
+        .welcome-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .welcome-title {
+            font-size: 40rpx;
+            font-weight: 600;
+            margin-bottom: 16rpx;
+            color: #333;
+        }
+
+        .welcome-subtitle {
+            font-size: 28rpx;
+            color: #666;
+            margin-bottom: 32rpx;
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg, #07c160 0%, #06a050 100%);
+            color: white;
+            border: none;
+            padding: 24rpx 64rpx;
+            border-radius: 24rpx;
+            font-size: 32rpx;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.3);
+        }
+
+        .login-btn:active {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-left">
+            <span class="back-btn">‹</span>
+            <span class="nav-title">用户中心</span>
+        </div>
+        <div class="nav-right">
+            <span class="nav-icon">🔍</span>
+            <span class="nav-icon">⋯</span>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 已登录状态 -->
+        <div class="user-card">
+            <div class="avatar">👤</div>
+            <div class="username">张三</div>
+            <div class="phone">138****8888</div>
+            <div class="member-level">用户</div>
+            <button class="logout-btn">退出登录</button>
+        </div>
+
+        <!-- 余额卡片 -->
+        <div class="balance-card">
+            <div class="balance-title">账户余额</div>
+            <div class="balance-amount">¥ 258.00</div>
+            <div class="balance-desc">可用于店内消费</div>
+        </div>
+
+        <!-- 交易记录 -->
+        <div class="transaction-section">
+            <div class="section-title">交易记录</div>
+            <div class="transaction-item">
+                <div class="transaction-info">
+                    <div class="transaction-type">桌游消费</div>
+                    <div class="transaction-date">2024-01-15 14:30</div>
+                </div>
+                <div class="transaction-amount">-¥ 50.00</div>
+            </div>
+            <div class="transaction-item">
+                <div class="transaction-info">
+                    <div class="transaction-type">桌游消费</div>
+                    <div class="transaction-date">2024-01-14 20:15</div>
+                </div>
+                <div class="transaction-amount">-¥ 30.00</div>
+            </div>
+            <div class="transaction-item">
+                <div class="transaction-info">
+                    <div class="transaction-type">充值</div>
+                    <div class="transaction-date">2024-01-13 16:45</div>
+                </div>
+                <div class="transaction-amount">+¥ 100.00</div>
+            </div>
+        </div>
+
+        <!-- 未登录状态（默认隐藏） -->
+        <div class="welcome-card" style="display: none;">
+            <div class="welcome-title">欢迎来到狼人杀桌游店</div>
+            <div class="welcome-subtitle">登录后可查看用户信息和余额</div>
+            <button class="login-btn">立即登录</button>
+        </div>
+
+        <div class="bottom-space"></div>
+    </div>
+
+    <script>
+        // 模拟登录状态切换
+        function toggleLoginStatus() {
+            const userCard = document.querySelector('.user-card');
+            const balanceCard = document.querySelector('.balance-card');
+            const transactionSection = document.querySelector('.transaction-section');
+            const welcomeCard = document.querySelector('.welcome-card');
+
+            if (userCard.style.display === 'none') {
+                userCard.style.display = 'block';
+                balanceCard.style.display = 'block';
+                transactionSection.style.display = 'block';
+                welcomeCard.style.display = 'none';
+            } else {
+                userCard.style.display = 'none';
+                balanceCard.style.display = 'none';
+                transactionSection.style.display = 'none';
+                welcomeCard.style.display = 'block';
+            }
+        }
+
+        // 点击登录按钮切换状态
+        document.querySelector('.login-btn').addEventListener('click', toggleLoginStatus);
+        document.querySelector('.logout-btn').addEventListener('click', toggleLoginStatus);
+
+        // 导航功能
+        document.querySelector('.back-btn').addEventListener('click', () => {
+            alert('返回首页');
+        });
+
+        document.querySelector('.nav-icon:nth-child(1)').addEventListener('click', () => {
+            alert('搜索功能开发中');
+        });
+
+        document.querySelector('.nav-icon:nth-child(2)').addEventListener('click', () => {
+            alert('更多功能：\n1. 关于我们\n2. 意见反馈\n3. 分享小程序');
+        });
+    </script>
+</body>
+</html>

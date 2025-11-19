@@ -1,0 +1,114 @@
+<!--pages/activity-list/activity-list.wxml-->
+<view class="container">
+  <!-- 顶部状态栏 - 微信风格 -->
+  <view class="status-bar">
+    <view class="status-left">
+      <text class="status-time">{{currentTime}}</text>
+    </view>
+    <view class="status-right">
+      <text class="status-text">狼人杀桌游店</text>
+    </view>
+  </view>
+
+  <!-- 顶部导航栏 - 微信风格 -->
+  <view class="nav-header">
+    <view class="nav-content">
+      <text class="nav-title">活动列表</text>
+      <view class="nav-actions">
+        <view class="nav-action" bindtap="goToSearch">
+          <text class="nav-icon">🔍</text>
+        </view>
+        <view class="nav-action" bindtap="goToCreateActivity">
+          <text class="nav-icon">➕</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 标签页 - 微信风格 -->
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'all' ? 'active' : ''}}" data-tab="all" bindtap="switchTab">
+      <text class="tab-text">全部活动</text>
+    </view>
+    <view class="tab-item {{activeTab === 'today' ? 'active' : ''}}" data-tab="today" bindtap="switchTab">
+      <text class="tab-text">今日活动</text>
+    </view>
+    <view class="tab-item {{activeTab === 'upcoming' ? 'active' : ''}}" data-tab="upcoming" bindtap="switchTab">
+      <text class="tab-text">即将开始</text>
+    </view>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <scroll-view class="main-content" scroll-y="true">
+    <!-- 活动列表 - 微信风格 -->
+    <view class="activity-section" wx:if="{{filteredActivities.length > 0}}">
+      <view class="section-header">
+        <text class="section-title">{{activeTab === 'today' ? '今日活动' : activeTab === 'upcoming' ? '即将开始' : '全部活动'}}</text>
+        <text class="section-count">{{filteredActivities.length}} 个活动</text>
+      </view>
+      
+      <view class="activity-list">
+        <view 
+          class="activity-item {{item.currentPlayers >= item.maxPlayers ? 'full' : ''}}" 
+          wx:for="{{filteredActivities}}" 
+          wx:key="id"
+          bindtap="viewActivityDetail"
+          data-id="{{item.id}}"
+        >
+          <view class="activity-avatar">
+            <text class="avatar-icon">{{item.currentPlayers >= item.maxPlayers ? '🔒' : '🎯'}}</text>
+          </view>
+          <view class="activity-content">
+            <view class="activity-title-row">
+              <text class="activity-tag {{item.currentPlayers >= item.maxPlayers ? 'full' : 'available'}}">
+                {{item.currentPlayers >= item.maxPlayers ? '已满员' : '报名中'}}
+              </text>
+              <text class="activity-title">{{item.title}}</text>
+            </view>
+            <view class="activity-info">
+              <text class="activity-date">📅 {{item.date}}</text>
+              <text class="activity-time">⏰ {{item.time}}</text>
+              <text class="activity-players">👥 {{item.currentPlayers}}/{{item.maxPlayers}}人</text>
+            </view>
+            <view class="activity-progress">
+              <view class="progress-bar">
+                <view class="progress-fill" style="width: {{(item.currentPlayers / item.maxPlayers) * 100}}%"></view>
+              </view>
+              <text class="progress-text">{{Math.round((item.currentPlayers / item.maxPlayers) * 100)}}%</text>
+            </view>
+            <view class="activity-footer">
+              <view class="organizer-info">
+                <text class="organizer-label">组织者</text>
+                <text class="organizer-name">{{item.creator.name}}</text>
+              </view>
+              <view class="join-btn {{item.currentPlayers >= item.maxPlayers ? 'disabled' : ''}}" 
+                    wx:if="{{item.currentPlayers < item.maxPlayers}}" 
+                    bindtap="joinActivity" 
+                    data-id="{{item.id}}">
+                <text class="btn-text">立即报名</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 - 微信风格 -->
+    <view class="empty-section" wx:if="{{filteredActivities.length === 0}}">
+      <view class="empty-card">
+        <view class="empty-icon">🎲</view>
+        <text class="empty-title">暂无活动</text>
+        <text class="empty-desc">{{activeTab === 'today' ? '今日暂无活动' : activeTab === 'upcoming' ? '暂无即将开始的活动' : '还没有任何活动'}}</text>
+        <view class="empty-action" bindtap="goToCreateActivity">
+          <text class="action-text">创建活动</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部间距 -->
+    <view class="bottom-spacing"></view>
+  </scroll-view>
+
+  <!-- 底部标签栏占位 -->
+  <view class="tab-bar-placeholder"></view>
+</view>

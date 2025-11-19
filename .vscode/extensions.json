@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "crazyurus.miniprogram-vscode-extension",
+    "ms-vscode.vscode-json",
+    "formulahendry.code-runner",
+    "ritwickdey.liveserver",
+    "ms-vscode.hexeditor"
+  ]
+}
